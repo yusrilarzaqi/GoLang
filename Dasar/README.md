@@ -241,7 +241,7 @@ func main() {
   fmt.Println(firstName)
   fmt.Println(lastName)
   fmt.Println(value)
-  
+
   /* ERROR
    * firstName = "tidak bisa diubah"
    * lastName = "tidak bisa diubah"
@@ -254,5 +254,38 @@ func main() {
 - Sama seperti Variabel, di Go-Lang juga kita bisa membuat constant secara sekaligus banyak.
 
 ```go
-
+const (
+  firstName = "Yusril"
+  lastName         = "Arzaqi"
+  value            = 1000
+)
 ```
+
+## Konversi Tipe Data
+
+- Di Go-Lang kadang kita butuh melakukan konversi tipe data dari satu tipe ke tipe lain.
+- Misal kita ingin mengkonversi tipe data `int32` ke `int64`, dan lain-lain.
+
+```go
+func main() {
+	var nilai32 int32 = 32768
+	var nilai64 int64 = int64(nilai32)
+
+	var nilai16 int16 = int16(nilai32)
+	var nilai8 int8 = int8(nilai32)
+
+	fmt.Println(nilai32)
+	fmt.Println(nilai64)
+	fmt.Println(nilai16)
+  fmt.Println(nilai8)
+
+  var name = "Yusril arzaqi"
+  var e byte = name[0]
+  var eString = string(e)
+
+  fmt.Println(name)
+  fmt.Println(eString)
+}
+```
+
+##

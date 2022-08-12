@@ -11,8 +11,8 @@ func main() {
 
 	const (
 		firstName = "Yusril"
-		lastName         = "Arzaqi"
-		value            = 1000
+		lastName  = "Arzaqi"
+		value     = 1000
 	)
 
 	fmt.Println(firstName)
