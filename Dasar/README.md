@@ -224,4 +224,35 @@ func main() {
 }
 ```
 
-##
+## Constant
+
+- Constant adalah variable yang nilainya tidak bisa diubah lagi setelah pertama kali diberi nilai.
+- Cara pembuatan constant mirip dengan variable, yang membedakan hanya kata kunci yang digunakan adalah `const`, bukan `var`.
+- Saat pembuatan constant, kita wajib langsung menginisialisasikan datanya.
+
+### Kode : Constant
+
+```go
+func main() {
+  const firstName string = "Yusril"
+  const lastName = "Arzaqi"
+  const value = 1000
+
+  fmt.Println(firstName)
+  fmt.Println(lastName)
+  fmt.Println(value)
+  
+  /* ERROR
+   * firstName = "tidak bisa diubah"
+   * lastName = "tidak bisa diubah"
+   */
+}
+```
+
+### Deklarasi Multiple Constant
+
+- Sama seperti Variabel, di Go-Lang juga kita bisa membuat constant secara sekaligus banyak.
+
+```go
+
+```
