@@ -55,11 +55,33 @@ func main() {
   - Integer.
   - Floating Point.
 
-| Tipe Data | Nilai Minimum        | Nilai Maksimum      |
-| --------- | -------------------- | ------------------- |
-| int8      | -128                 | 127                 |
-| int16     | -32768               | 32767               |
-| int32     | -21474883648         | 21474883647         |
-| int64     | -9223372036843775808 | 9223372036843775807 |
+| Tipe Data |    Nilai Minimum     |    Nilai Maksimum    |
+| :-------: | :------------------: | :------------------: |
+|   int8    |         -128         |         127          |
+|   int16   |        -32768        |        32767         |
+|   int32   |     -21474883648     |     21474883647      |
+|   int64   | -9223372036843775808 | 9223372036843775807  |
+|   uint8   |          0           |         255          |
+|  uint16   |          0           |        65535         |
+|  uint32   |          0           |      4294967295      |
+|  uint64   |          0           | 18446744073709551615 |
 
-###
+### Tipe Data Floating Point
+
+| Tipe Data  |                     Nilai Minimum                      | Nilai Maksimum |
+| :--------: | :----------------------------------------------------: | :------------: |
+|  float32   |                        -3.4e+38                        |    3.4e+38     |
+|  float64   |                       -1.7e+308                        |   +1.7e+308    |
+| complex64  | complex numbers with float32 real and imaginary parts. |       -        |
+| complex128 | complex numbers with float64 real and imaginary parts. |       -        |
+
+### Alias
+
+| Tipe Data |     Alias      |
+| :-------: | :------------: |
+|   byte    |     uint8      |
+|   rune    |     int32      |
+|    int    | Minimal int32  |
+|   uint    | Minimal uint32 |
+
+### Kode Program Number
