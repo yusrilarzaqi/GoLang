@@ -408,4 +408,55 @@ func main() {
   fmt.Println(num1 != num2) // true
 ```
 
-### Operasi Boolean
+## Operasi Boolean
+
+| Operator | Keterangan |
+| :------: | :--------: |
+|   `&&`   |    Dan     |
+|  `\|\|`  |    Atau    |
+|   `!`    | Kebalikan  |
+
+### Operasi &&
+
+| Nilai 1 | Operator | Nilai 2 | Hasil   |
+| :-----: | :------: | :-----: | ------- |
+| `true`  |   `&&`   | `true`  | `true`  |
+| `true`  |   `&&`   | `false` | `false` |
+| `false` |   `&&`   | `true`  | `false` |
+| `false` |   `&&`   | `false` | `false` |
+
+### Operator ||
+
+| Nilai 1 | Operator | Nilai 2 | Hasil   |
+| :-----: | :------: | :-----: | ------- |
+| `true`  |  `\|\|`  | `true`  | `true`  |
+| `true`  |  `\|\|`  | `false` | `true`  |
+| `false` |  `\|\|`  | `true`  | `true`  |
+| `false` |  `\|\|`  | `false` | `false` |
+
+### Operator !
+
+| Operator | Nilai 2 |  Hasil  |
+| :------: | :-----: | :-----: |
+|   `!`    | `true`  | `fasle` |
+|   `!`    | `false` | `true`  |
+
+### Kode : Operasi Boolean
+
+```go
+func main() {
+  var nilaiAkhir = 90;
+  var absensi = 80;
+
+  var lulusAbsensi bool = absensi > 80; // false
+  var lulusNilaiAkhir bool = nilaiAkhir >= 80; // true
+  var lulusAbsensi bool = absensi >= 80; // true
+
+  var lulus bool = lulusAbsensi && lulusNilaiAkhir; // true
+
+  fmt.Println(lulus)
+  fmt.Println(nilaiAkhir >= 80 && absensi >= 80) // true
+}
+```
+
+###
