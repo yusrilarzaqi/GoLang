@@ -36,3 +36,30 @@ go version
 
 - Visual Studio Code.
 - JetBrains GoLand.
+
+## Program Hello World
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Hello World")
+}
+```
+
+## Tipe Data Number
+
+- Ada dua jenis tipe data Number, yaitu :
+  - Integer.
+  - Floating Point.
+
+| Tipe Data | Nilai Minimum        | Nilai Maksimum      |
+| --------- | -------------------- | ------------------- |
+| int8      | -128                 | 127                 |
+| int16     | -32768               | 32767               |
+| int32     | -21474883648         | 21474883647         |
+| int64     | -9223372036843775808 | 9223372036843775807 |
+
+###
