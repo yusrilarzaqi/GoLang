@@ -85,3 +85,35 @@ func main() {
 |   uint    | Minimal uint32 |
 
 ### Kode Program Number
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Satu = ", 1)
+  fmt.Println("Dua = ", 2)
+  fmt.Println("Tiga Koma Lima = ", 3.5)
+}
+```
+
+## Tipe Data Boolean
+
+- Tipe data boolean adalah tipe data yang memiliki dua nilai, yaitu benar atau salah.
+- Di Go-Lang, tipe data boolean direpresentasikan menggunakan kata kunci `bool`.
+
+### Kode : Boolean
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Benar = ", true)
+  fmt.Println("Salah = ", false)
+}
+```
+
+##
