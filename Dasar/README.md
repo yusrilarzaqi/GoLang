@@ -84,7 +84,7 @@ func main() {
 |    int    | Minimal int32  |
 |   uint    | Minimal uint32 |
 
-### Kode Program Number
+### Kode : Tipe Data Number
 
 ```go
 package main
@@ -103,7 +103,7 @@ func main() {
 - Tipe data boolean adalah tipe data yang memiliki dua nilai, yaitu benar atau salah.
 - Di Go-Lang, tipe data boolean direpresentasikan menggunakan kata kunci `bool`.
 
-### Kode : Boolean
+### Kode : Tipe Data Boolean
 
 ```go
 package main
@@ -113,6 +113,50 @@ import "fmt"
 func main() {
   fmt.Println("Benar = ", true)
   fmt.Println("Salah = ", false)
+}
+```
+
+## Tipe Data String
+
+- String ada tipe data kumpulan karakter.
+- Jumlah karakter di dalam String bisa nol sampai tidak terhingga.
+- Tipe data String di Go-Lang direpresentasikan dengan kata kunci `string`.
+- Nilai data String di Go-Lang selalu diawali dengan karakter `"` (petik dua) dan diakhiri dengan karakter `"` (petik dua).
+
+### Kode : Tipe Data String
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Yusril")
+  fmt.Println("Yusril Arzaqi")
+  fmt.Println("Yusril Arzaqi memetik bunga")
+}
+```
+
+### Fucntion untuk String
+
+| Function           | Keterangan                                     |
+| ------------------ | ---------------------------------------------- |
+| `len("string)`     | Menghitung jumlah karakter di String           |
+| `"string"[number]` | Mengambil karakter pada posisi yang ditentukan |
+
+### Kode : Function untuk String
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+  fmt.Println("Yusril")
+  fmt.Println("Yusril Arzaqi")
+  fmt.Println("Yusril Arzaqi memetik bunga")
+  fmt.Println(len("Yusril Arzaqi memetik bunga"))
+  fmt.Println("Yusril Arzaqi memetik bunga"[10])
 }
 ```
 
