@@ -459,4 +459,57 @@ func main() {
 }
 ```
 
-###
+## Tipe Data Array
+
+- Array adalah tipe data yang berisikan kumpulan data dengan tipe yang sama.
+- Saat membuat array, kita perlu menentukan jumlah data yang bisa ditampung oleh Array tersebut.
+- Daya tampung Array tidak bisa bertambah setelah Array dibuat.
+
+### Index di Array
+
+| Index |  Data  |
+| :---: | :----: |
+|   0   | Yusril |
+|   1   | Arzaqi |
+
+### Kode : Tipe Data Array
+
+```go
+func main() {
+	var names [2]string
+	names[0] = "Yusril"
+	names[1] = "Arzaqi"
+
+	fmt.Println(names[0]) // yusril
+	fmt.Println(names[1]) // arzaqi
+}
+```
+
+### Membuat Array Langsung
+
+- Di Go-Lang kita juga bisa membuat Array secara langsung saat deklarasi variable.
+
+```go
+var values = [3]int{
+  95,
+  90,
+  80,
+};
+fmt.Println(values) //  [95, 90, 80]
+```
+
+### Function Array
+
+| Operasi   | Keterangan    |
+|--------------- | --------------- |
+| `len(array)`   | Untuk mendapatkan panjang Array   |
+| `array[index]`   | Mendapat data di posisi index   |
+| `array[index] = value`   | Mengubah data di posisi index   |
+
+```go
+fmt.Println(len(names))
+fmt.Println(len(values))
+  
+var test [9]int
+fmt.Println(len(test)) // 10
+```
