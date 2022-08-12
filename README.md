@@ -1,3 +1,3 @@
 # Golang Materi
 
-## Golang Dasar
+## [Golang Dasar](https://github.com/yusrilarzaqi/GoLang/tree/main/Dasar)
