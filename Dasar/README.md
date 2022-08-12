@@ -306,4 +306,68 @@ func main() {
 }
 ```
 
+## Operasi Matematika
+
+| Operator |   Keterangan    |
+| :------: | :-------------: |
+|    +     |   Penjumlahan   |
+|    -     |   Pengurangan   |
+|    \*    |    Perkalian    |
+|    /     |   Pembagaian    |
+|    %     | Sisa Pembagaian |
+
+### Kode : Operasi Matematika
+
+```go
+func main() {
+  var a = 10
+  var b = 10
+  var result = a + b
+
+  fmt.Println(result) // 20
+}
+```
+
+### Augmented Assignments
+
+| Operasi Matematika | Augmented Assignments |
+| :----------------: | :-------------------: |
+|    `a = a + 10`    |       `a += 10`       |
+|    `a = a - 10`    |       `a -= 10`       |
+|    `a = a * 10`    |       `a *= 10`       |
+|    `a = a / 10`    |       `a /= 10`       |
+|    `a = a % 10`    |       `a %= 10`       |
+
+### Augmented Assignments
+
+```go
+func main() {
+  var i = 10;
+  i += 10
+  fmt.Println(i)
+}
+```
+
+### Unary Operator
+
+| Operator |    Keterangan     |
+| :------: | :---------------: |
+|   `++`   |    `a = a + 1`    |
+|   `--`   |    `a = a - 1`    |
+|   `-`    |     Negative      |
+|   `+`    |     Positive      |
+|   `!`    | Boolean Kebalikan |
+
+### Kode : Unary Operator
+
+```go
+i++ // i = i + 1
+fmt.Println(i) // 21
+
+var positive = +1000
+var negative = -1000
+fmt.Println(positive)
+fmt.Println(negative)
+```
+
 ##
