@@ -609,7 +609,6 @@ fmt.Println(toSlice)
 
 - Saat membuat Array, kita harus berhati-hati, jika salah, maka yang kita buat bukanlah array, melainkan slice.
 
-
 ```go
 iniArray := [5]int{1, 2, 3, 4, 5}
 iniSlice := []int{1,2,3 ,4, 5 }
@@ -619,3 +618,55 @@ fmt.Println(iniSlice)
 ```
 
 ## Tipe Data Map
+
+- Pada Array atau Slice, untuk mengakses data, kita menggunakan index Number dimulai dari 0.
+- Map adalah tipe data lain yang berisikan kumpulan data yang sama, namun kita bisa menentukan jenis tipe data index yang akan kita gunakan.
+- Sederhananya, Map adalah tipe data dan kumpulan key-value (kata kunci - nilai), dimana kata kunci bersifat unik, tidak boleh sama.
+- Berbeda dengan Array dan Slice, jumlah data yang kita masukan ke dalam Map boleh sebanyak-banyaknya, asalkan kata kuncinya berbeda, jika kita gunakan kata kunci sama, maka secara otomatis data sebelumnya akan diganti dengan data baru.
+
+### Kode : Tipe Data Map
+
+```go
+func main() {
+  var person /* map[string]string */ = map[string]string {
+    "firstName" : "Yusril",
+    "lastName" : "Arzaqi",
+    "address": "Semarang",
+  };
+
+  person["title"] = "Mahasiswa"
+
+  fmt.Println(person) // map[address:Semarang firstName:Yusril lastName:Arzaqi title:Mahasiswa]
+  fmt.Println(person["firstName"]) // Yusril
+  fmt.Println(person["lastName"]) // Arzaqi
+  fmt.Println(person["address"]) // Semarang
+  fmt.Println(person["title"]) // Mahasiswa
+}
+```
+
+### Function Map
+
+|            Operasi            |              Keterangan              |
+| :---------------------------: | :----------------------------------: |
+|          `len(map)`           | Untuk mendapatkan jumlah data di map |
+|          `map[key]`           |   Mengambil data di map dengan key   |
+|      `map[key] = value`       |   Mengubah data di map dengan key    |
+| `make(map[TypeKey]TypeValue)` |           Membuat map baru           |
+|      `delete(map, key)`       |   Menghapus data di map dengan key   |
+
+## Kode : Function Map
+
+```go
+func main() {
+  book := make(map[string]string) // membuat map kosong
+  book["title"] = "Buku Go-Lang"
+  book["author"] = "Yusril Arzaqi"
+  book["wrong"] = "Ups"
+
+  delete(book, "wrong") // menghapus key "wrong"
+
+  fmt.Println(book)
+}
+```
+
+##
