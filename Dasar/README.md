@@ -500,16 +500,122 @@ fmt.Println(values) //  [95, 90, 80]
 
 ### Function Array
 
-| Operasi   | Keterangan    |
-|--------------- | --------------- |
-| `len(array)`   | Untuk mendapatkan panjang Array   |
-| `array[index]`   | Mendapat data di posisi index   |
-| `array[index] = value`   | Mengubah data di posisi index   |
+|        Operasi         |           Keterangan            |
+| :--------------------: | :-----------------------------: |
+|      `len(array)`      | Untuk mendapatkan panjang Array |
+|     `array[index]`     |  Mendapat data di posisi index  |
+| `array[index] = value` |  Mengubah data di posisi index  |
 
 ```go
 fmt.Println(len(names))
 fmt.Println(len(values))
-  
+
 var test [9]int
 fmt.Println(len(test)) // 10
 ```
+
+## Tipe Data Slice
+
+- Tipe data Slice adalah potongan dari data Array.
+- Slice mirip dengan Array, yang membedakan adalah ukuran Slice bisa berubah.
+- Slice dan Array selalu terkoneksi, dimana Slice adalah data yang mengakses sebagaian atau seluruh data di Array.
+- Tipe Data Slice memiliki 3 data, yaitu pointer, length dan capacity.
+- Pointer adalah penunjuk data pertama di array pada slice.
+- Length adalah panjang dari slice, dan
+- Capacity adalah kapasitas dari slice, dimana length tidak boleh lebih dari capacity.
+
+### Detail Tipe Data Slice
+
+- Tipe Data Slice memiliki 3 data, yaitu pointer, length dan capacity.
+- Pointer adalah penunjuk data pertama di array para slice.
+- Length adalah penunjuk data pertama di array para slice.
+- Capacity adalah kapasitas dari slice, dimana length tidak boleh lebih dari capacity.
+
+### Membuat Slice Dari Array
+
+|   Membuat Slice   |                               Keterangan                               |
+| :---------------: | :--------------------------------------------------------------------: |
+| `array[low:high]` |  Membuat slice dari array dimulai index low sampai index sebelum high  |
+|   `array[low:]`   | Membuat slice dari array dimulai index low sampai index akhir di array |
+|  `array[:high]`   |   Membuat slice dari array dimulai index 0 sampai index sebelum high   |
+|    `array[:]`     | Membuat slice dari array dimulai index 0 sampai index akhir dari array |
+
+### Slice dan Array
+
+![Slice dan Array](./img/SlicedanArray.png)
+
+### Kode : Tipe Data Slice
+
+```go
+func main() {
+  names := [...]string{
+    "Yusril Arzaqi",
+    "Bimo Alamsyah",
+    "Adam Saptura",
+    "Dimas Rafif",
+    "Irfan",
+  }
+  slice := names[1:4]
+
+  fmt.Println(slice[0]) // Bimo Alamsyah
+  fmt.Println(slice[1]) // Adam Saptura
+  fmt.Println(len(names)) // 5
+}
+```
+
+### Function Slice
+
+|               Operasi                |                                    Keterangan                                    |
+| :----------------------------------: | :------------------------------------------------------------------------------: |
+|             `len(slice)`             |                         Untuk mendapatkan panjang slice                          |
+|             `cap(slice)`             |                           Untuk mendapatkan kapasitas                            |
+|        `append(slice, data)`         | Memubat slice baru dengan nemambah data ke posisi terakhir slice, jika kapasitas |
+| `make([]TypeData, length, capacity)` |                                Membuat slice baru                                |
+|     `copy(destination, source)`      |                    Menyalin slice dari source ke destination                     |
+
+### Kode : Append Slice
+
+```go
+  daySlice2 := append(daySlice1, "Libur Baru") // membuat dan menambah slice baru dari daySlice1
+  daySlice2[0] = "Ups" // mengganti Sabtu Baru menjadi "Ubs"
+  fmt.Println(daySlice2) // [Ups Minggu Baru Libur Baru]
+  fmt.Println(days) // [Senin Selasa Rabu Kamis Jumad Sabtu Baru Minggu Baru]
+
+```
+
+### Kode : Make Slice
+
+```go
+newSlice := make([]string, 2, 5)
+newSlice[0] = "Yusril"
+newSlice[1] = "Arzaqi"
+
+fmt.Println(newSlice)
+fmt.Println(len(newSlice))
+fmt.Println(cap(newSlice))
+```
+
+### Kode : Copy Slice
+
+```go
+fromSlice := days[:]
+toSlice := make([]string, len(fromSlice), cap(fromSlice))
+copy(toSlice, fromSlice)
+
+fmt.Println(toSlice)
+```
+
+### Hati - Hati Saat Membuat Array
+
+- Saat membuat Array, kita harus berhati-hati, jika salah, maka yang kita buat bukanlah array, melainkan slice.
+
+
+```go
+iniArray := [5]int{1, 2, 3, 4, 5}
+iniSlice := []int{1,2,3 ,4, 5 }
+
+fmt.Println(iniArray)
+fmt.Println(iniSlice)
+```
+
+## Tipe Data Map
