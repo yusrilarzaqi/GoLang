@@ -432,7 +432,7 @@ func main() {
 | `false` |  `\|\|`  | `true`  | `true`  |
 | `false` |  `\|\|`  | `false` | `false` |
 
-### Operator !
+### Operator ! (not)
 
 | Operator | Nilai 2 |  Hasil  |
 | :------: | :-----: | :-----: |
@@ -1056,5 +1056,45 @@ func getComplateName() (firstName string, lastName string){
 func main()  {
   firstName, lastName := getComplateName()
   fmt.Println(firstName, lastName)
+}
+```
+
+## Variadic Function
+
+- Parameter yang berada di posisi terakhir, memiliki kemampuan dijadikan sebuah varags.
+- Varags artinya datanya bisa menerima lebih dari satu input, atau anggap saja semacam Array.
+- Apa bedanya dengan parameter biasa dengan tipe data Array ?
+  - Jika parameter tipe Array, kita wajib membuat array terlebih dahulu sebelum mengirimkan ke function.
+  - Jika parameter menggunakan varags, kita bisa langsung mengirim datanya, jika lebih dari satu, cukup gunakan tanda koma.
+
+### Kode : Variadic Function
+
+```go
+func sumAll(numbers ...int) int {
+  total := 0
+  for _, number := range numbers {
+    total += number;
+  }
+  return total;
+}
+
+func main() {
+  total := sumAll(10, 20, 30, 40, 50, 60, 70, 80, 90)
+  fmt.Println(total)
+}
+```
+
+### Slice Parameter
+
+- Kadang ada kasus dimana kita menggunakan Variadic Function, namun memiliki variable berupa slice.
+- Kita bisa menjadikan slice sebagai varag parameter.
+
+### Kode : Slice Parameter
+
+```go
+func main() {
+  numbers := []int{10, 20, 30, 40, 50, 60, 70, 80, 90}
+  result = sumAll(numbers...)
+  fmt.Println(result)
 }
 ```
