@@ -992,3 +992,50 @@ func main() {
 - Jika function tersebut kita deklarasikan dengan tipe data pengembalikan, maka wabjib di dalam function nya kita harus mengembalikan data.
 - Untuk mengembalikan data dari function, kita bisa menggunakan kata kunci `return`, diikuti dengan datanya.
 
+### Kode : Function Return Value
+
+```go
+func sum(numbers []int) int {
+	result := 0
+	for _, number := range numbers {
+		result += number
+	}
+	return result
+}
+func getHello(name string) string {
+	if name == "" {
+		return "Hello Anda Siapa"
+	} else {
+		return "Hello " + name
+	}
+}
+
+func main() {
+	result := getHello("Yusril")
+	fmt.Println(result)
+
+	result = getHello("")
+	fmt.Println(result)
+
+	fmt.Println(sum([]int{10, 20, 30, 40}))
+}
+```
+
+## Returning Multiple Value
+
+- Function tidak hanya dapat mengembalikan satu value, tapi juga bisa multiple value.
+- Untuk memberitahu jika function mengembalikan multiple value, kita harus menulis semua tipe data `return` value di function.
+
+### Menghiraukan Return Value
+
+- Multiple `return` value wajib ditangkap semua value nya.
+- Jika kita ingin menghiraukan `return` value tersebut, kita bisa menggunakan tanda `_` (garis bawah).
+
+### Kode : Menghiraukan Return Value
+
+```go
+func main() {
+  firstName, _ := getFullName()
+  fmt.Println(firstName)
+}
+```
