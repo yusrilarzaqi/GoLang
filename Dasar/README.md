@@ -338,8 +338,6 @@ func main() {
 |    `a = a / 10`    |       `a /= 10`       |
 |    `a = a % 10`    |       `a %= 10`       |
 
-### Augmented Assignments
-
 ```go
 func main() {
   var i = 10;
@@ -654,7 +652,7 @@ func main() {
 | `make(map[TypeKey]TypeValue)` |           Membuat map baru           |
 |      `delete(map, key)`       |   Menghapus data di map dengan key   |
 
-## Kode : Function Map
+### Kode : Function Map
 
 ```go
 func main() {
@@ -669,4 +667,87 @@ func main() {
 }
 ```
 
-##
+## If Expression
+
+- If adalah salah satu kata kunci yang digunakan untuk percabangan.
+- Percabangan artinya kita bisa mengeksekusi kode program tertentu ketika suatu kondisi terpenuhi.
+- Hampir di semua bahasa pemrograman mendukung if expression.
+
+### Kode : if Expression
+
+```go
+func main() {
+    name := "Yusril"
+
+    if name == "Yusril" {
+        fmt.Println("Hello Yusril")
+    }
+}
+```
+
+### Else Expression
+
+- Blok `if` akan dieksekusi ketika kondisi `if` bernilai `true`.
+- Kadang kita ingin melakukan eksekusi program tertentu jika kondisi `if` bernilai `false`.
+- Hal ini bisa dilakukan menggunakan `else` expression.
+
+### Kode : Else Expression
+
+```go
+func main() {
+  name := "Yusril";
+
+  if name == "Yusril" /* true */ {
+    fmt.Println("Hello Yusril");
+  } else {
+    fmt.Println("Hai, ... ?")
+  }
+}
+```
+
+### Else If Expression
+
+- Kadang dalam if, kita butuh membuat beberapa kondisi.
+- Kasus seperti ini, kita bisa menggunakan `else if` expression.
+
+### Kode : Else If Expression
+
+```go
+func main() {
+  // name := "Yusril"; // true
+  name := "Arzaqi"; // false
+
+  if name == "Yusril" /* true */ {
+    fmt.Println("Hello Yusril"); // print jika name "Yusril"
+  } else if name == "Arzaqi" {
+    fmt.Println("Hello Arzaqi") // print jika name "Arzaqi"
+  } else {
+    fmt.Println("Hai, ... ?"); // print jika name tidak "Yusril" atau "Arzaqi"
+  }
+}
+```
+
+### If dengan Shot Statement
+
+- `if` mendukung shor statment sebelum kondisi.
+- Hal ini sangat cocok untuk membuat statement yang sederhana sebelum melakukan pengecekan terhadap kondisi.
+
+### Kode : if short statement
+
+```go
+func main() {
+    if length := len(name); length > 5 {
+        fmt.Println("Nama Terlalu panjang");
+    } else {
+        fmt.Println("Nama sudah benar")
+    }
+}
+```
+
+## Switch Expression
+
+- Selain `if` expression, untuk melakukan percabangan, kita juga bisa menggunakan Switch Expression.
+- Switch expression sangat sederhana dibandingkan `if`.
+- Bisasanya `switch` expression digunakan untuk melakukan pengecekan ke kondisi dalam satu variable.
+
+### Kode : Switch
