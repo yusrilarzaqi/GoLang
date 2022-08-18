@@ -851,7 +851,8 @@ func main() {
 
 ### Kode : For Range
 
-**menggunakan for loop biasa** 
+**menggunakan for loop biasa**
+
 ```go
 func main() {
   names := []string {
@@ -867,9 +868,9 @@ func main() {
 }
 ```
 
-----
+---
 
-**Menggunakan Range** 
+**Menggunakan Range**
 
 ```go
   func main() {
@@ -886,9 +887,10 @@ func main() {
 }
 ```
 
-----
+---
 
-**Menggunakan Map** 
+**Menggunakan Map**
+
 ```go
 func main(){
   person := map[string]string{
@@ -900,5 +902,47 @@ func main(){
 	for key, value := range person {
 		fmt.Println(key, ":", value)
 	}
+}
+```
+
+## Break & continue
+
+- `break` & `continue` adalah kata kunci yang bisa digunakan dalam perulangan.
+- `break` digunakan untuk menghentikan seluruh perulangan.
+- `continue` adalah digunakan untuk menghentikan perulangan yang berjalan, dan langsung melanjutkan ke perulangan selanjutnya.nya
+
+### Kode : Break
+
+```go
+func main() {
+	for i := 0; i < 10; i++ {
+		if i == 5 {
+			break
+		}
+		fmt.Println("Perulangan ke ", i)
+	}
+}
+```
+
+**Hasil**
+
+```
+Perulangan ke  0
+Perulangan ke  1
+Perulangan ke  2
+Perulangan ke  3
+Perulangan ke  4
+```
+
+### Kode : Continue
+
+```go
+func main() {
+  for i := 0; i < 10; i++ {
+    if i % 2 == 0 {
+      continue
+    }
+    fmt.Println("Perulangan ke", i)
+  }
 }
 ```
