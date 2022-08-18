@@ -1127,7 +1127,7 @@ func main() {
 
 ```go
 func sayHelloWithFilter(name string, filter func(string)string ) {
-  fmt.Println("Hello ", filter(name))   
+  fmt.Println("Hello ", filter(name))
 }
 
 func spamFilter(name string) string {
@@ -1148,3 +1148,34 @@ func main() {
 
 - Kadang jika function terlalu panjang, agak ribet untuk menuliskannya di dalam parameter.
 - Type Declarations juga bisa digunakan untuk membuat alias function, sehingga akan memepermudah kita menggunakan function sebagai parameter.
+
+## Anonymous Function
+
+- Sebelumnya setiap membuat function, kita akan selalu memberikan sebuah nama pada function tersebut.
+- Namun kadang ada kalanya lebih mudah membuat function secara langsung di variable atau parameter tanpa harus membuat function terlebih dahulu.
+- Hal tersebut dinamakan anonymous function, atau function tanpa nama.
+
+### Kode : Anonymous Function
+
+```go
+type Blacklist func(string) bool
+
+func registerUser(name string, blacklist Blacklist) {
+  if blacklist(name) {
+    fmt.Println("You Are Blocked", name)
+  } else {
+    fmt.Println("Welcome", name)
+  }
+}
+
+func main() {
+  blacklist := func(name string) bool {
+    return name == "anjing"
+  }
+  registerUser("Yusril", blacklist);
+  registerUser("anjing", blacklist);
+  registerUser("Dimas", func(name string) bool {
+    return name == "anjing"
+  })
+}
+```
