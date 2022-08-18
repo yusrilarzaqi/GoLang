@@ -1039,3 +1039,22 @@ func main() {
   fmt.Println(firstName)
 }
 ```
+
+## Named Return Value
+
+- Biasanya saat kita memberitahu bahwa sebuah function mengembalikan value, maka kita hanya mendeklarasikan tipe data `return` value di function.
+- Namun kita juga bisa membuat variable secara langsung di tipe data `return` function nya.
+
+### Kode : Named Return Value
+
+```go
+func getComplateName() (firstName string, lastName string){
+  firstName = "Yusril"
+  lastName = "Arzaqi"
+  return firstName, lastName
+}
+func main()  {
+  firstName, lastName := getComplateName()
+  fmt.Println(firstName, lastName)
+}
+```
