@@ -729,7 +729,7 @@ func main() {
 
 ### If dengan Shot Statement
 
-- `if` mendukung shor statment sebelum kondisi.
+- `if` mendukung shor statement sebelum kondisi.
 - Hal ini sangat cocok untuk membuat statement yang sederhana sebelum melakukan pengecekan terhadap kondisi.
 
 ### Kode : if short statement
@@ -797,7 +797,7 @@ func main() {
 func main() {
   name := "Yusril"
   length := len(name)
-  
+
 	switch {
 	case length > 10:
 		fmt.Println("Nama Terlalu Panjang")
@@ -807,5 +807,98 @@ func main() {
     fmt.Println("Nama Sudah Panjang")
 	}
 
+}
+```
+
+## For Loops
+
+- Falam Bahasa Pemrograman, bisasanya ada fitur yang bernama perulangan.
+- Salah satu fitur perulangan adalah for loops.
+
+### Kode For Loops
+
+```go
+func main() {
+  counter := 1
+
+  for counter <= 10 {
+    fmt.Println("Perulangan Ke : ", counter)
+    counter++;
+  }
+}
+```
+
+### For dengan Statement
+
+- Dalam for, kita bisa menambahkan statement, dimana terdapat 2 statement yang bisa tambahkan di for.
+- Init statement, yaitu sebelum for dieksekusi.
+- Post statement, yaitu statement yang akan selalu dieksekusi di akhir tiap perulangan.
+
+### Kode : For use Statement
+
+```go
+func main() {
+	for counter := 1; counter <= 10; counter++ {
+    fmt.Println("Perulangan Ke : ", counter)
+	}
+}
+```
+
+### For Range
+
+- For bisa digunakan untuk melakukan iterasi terhadap semua data collection.
+- Data collection contohnya Array, Slice dan Map
+
+### Kode : For Range
+
+**menggunakan for loop biasa** 
+```go
+func main() {
+  names := []string {
+    "Yusril",
+    "Arzaqi",
+    "Bimo",
+    "Adam",
+  }
+
+  for i := 0; i < len(names); i++ {
+    fmt.Println(names[i])
+  }
+}
+```
+
+----
+
+**Menggunakan Range** 
+
+```go
+  func main() {
+  names := []string {
+    "Yusril",
+    "Arzaqi",
+    "Bimo",
+    "Adam",
+  }
+
+  for index, name:= range names {
+    fmt.Println("Index", index, "=", name)
+  }
+}
+```
+
+----
+
+**Menggunakan Map** 
+```go
+func main(){
+  person := map[string]string{
+		"name":  "Yusril",
+		"kelas": "TKJ2",
+		"nim":   "185512",
+	}
+
+	for key, value := range person {
+		fmt.Println(key, ":", value)
+	}
 }
 ```
