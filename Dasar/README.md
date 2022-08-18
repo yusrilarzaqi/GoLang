@@ -751,3 +751,61 @@ func main() {
 - Bisasanya `switch` expression digunakan untuk melakukan pengecekan ke kondisi dalam satu variable.
 
 ### Kode : Switch
+
+```go
+func main() {
+	name := "Yusril"
+
+	switch name {
+	case "Yusril":
+		fmt.Println("Hello Yusril")
+	case "Adam":
+		fmt.Println("Hello Adam")
+	default:
+		fmt.Println("Hi, Boleh Kenalan ?")
+	}
+}
+```
+
+### Switch dengan Short Statement
+
+- Sama dengan `if`, `switch` juga mendukung short statement sebelum variable yang akan di cek kondisinya.
+
+### Kode : Switch Short Hand
+
+```go
+func main() {
+  name := "Yusril"
+
+  switch length := len(name); length > 5 {
+	case true:
+		fmt.Println("Nama Terlalu Panjang")
+	case false:
+		fmt.Println("Nama Sudah Benar")
+	}
+}
+```
+
+### Switch Tanpa Kondisi
+
+- Kondisi di `switch` expression tidak wajib.
+- Jika kita tidak menggunakan, kondisi di `switch` expression, kita bisa menambahkan kondisi tersebut di setiap case nya.
+
+### Kode Switch Tanpa Kondisi
+
+```go
+func main() {
+  name := "Yusril"
+  length := len(name)
+  
+	switch {
+	case length > 10:
+		fmt.Println("Nama Terlalu Panjang")
+  case length > 5:
+    fmt.Println("Nama Lumayan Panjang")
+  default :
+    fmt.Println("Nama Sudah Panjang")
+	}
+
+}
+```
