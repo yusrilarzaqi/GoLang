@@ -1179,3 +1179,43 @@ func main() {
   })
 }
 ```
+
+## Recursive Function
+
+- Recursive function adalah function yang memanggil function dirinya sendiri.
+- Kadang dalam pekerjaan, kita sering menemui kasus dimana menggunakan recursive function lebih mudah dibandingkan tidak menggunakan recursive function.
+- Contoh kasus yang lebih mudah diselesaikan menggunakan recursive adalah **Faktorical**
+
+### Kode : Factorical For Loop
+
+```go
+func factoricalLoop(value int) int {
+	result := 1
+	for i := value; i > 0; i-- {
+		result *= i
+	}
+	return result
+}
+
+func main() {
+	fmt.Println(factoricalLoop(5))
+}
+```
+
+### Kode : Faktorical For Recursive
+
+```go
+func factorialRecursive(value int) int {
+	if value == 1 {
+		return 1
+	} else {
+		return value * (factorialRecursive(value - 1))
+	}
+}
+
+func main() {
+	fmt.Println("faktorical menggunakan loop", factoricalLoop(5))
+	fmt.Println("faktorical menggunakan Recursive", factorialRecursive(5))
+	fmt.Println("faktorical menggunakan manual", 1*2*3*4*5)
+}
+```
