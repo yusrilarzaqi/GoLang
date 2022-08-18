@@ -984,3 +984,11 @@ func main() {
   sayHelloTo("Yusril", "Arzaqi")
 }
 ```
+
+## Function Return Value
+
+- Function bisa mengembalikan data.
+- Untuk memberitahu bahwa function mengembalikan data, kita harus menuliskan tipe data kembalikan dari function tersebut.
+- Jika function tersebut kita deklarasikan dengan tipe data pengembalikan, maka wabjib di dalam function nya kita harus mengembalikan data.
+- Untuk mengembalikan data dari function, kita bisa menggunakan kata kunci `return`, diikuti dengan datanya.
+
