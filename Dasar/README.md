@@ -1117,3 +1117,8 @@ func main() {
   fmt.Println(getGoodBye("Arzaqi"))
 }
 ```
+
+## Function as Parameter
+
+- Function tidak hanya bisa kita simpan di dalam variable sebagai value.
+- Namun juga bisa kita gunakan sebagai parameter untuk function lain.
