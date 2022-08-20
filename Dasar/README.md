@@ -1343,3 +1343,91 @@ func main() {
   // this is single line comment
 }
 ```
+
+## Struct
+
+- `struct` adalah sebuah template data yang digunakan untuk menggabungkan nol atau lebih tipe data lainnya dalam satu kesatuan.
+- `struct` biasanya representasi data dalam program aplikasi yang kita buat.
+- Data di `struct` disimpan dalam filed.
+- Sederhananya `struct` adalah kumplan dari field.
+
+### Kode Struct
+
+```go
+type Customer struct {
+	Name, Address string
+	Age           int
+}
+```
+
+### Membuat Data Struct
+
+- `struct` adalah template data atau prototype data.
+- `struct` tidak bisa langsung digunakan.
+- Namun kita bisa membuat data/object dari struct yang telah kita buat.
+
+### Kode : Membuat Data Struct
+
+```go
+func main() {
+  var yusril Customer
+  yusril.Name = "Yusril Arzaqi"
+  yusril.Address = "Indonesia"
+  yusril.Age = 18
+
+  fmt.Println(yusril)
+  fmt.Println(yusril.Name)
+  fmt.Println(yusril.Address)
+  fmt.Println(yusril.Age)
+}
+```
+
+### Struct Literals
+
+- Sebelumnya kita telah membuat data dari struct, namun sebenarnya ada banyak cara yang bisa kita gunakan untukmembuat data dari struct.
+
+### Kode : Struct Literals
+
+```go
+bimo := Customer {
+  Name: "Bimo Alamsyah",
+  Address: "Indonesia",
+  Age: 16,
+}
+
+fmt.Println(bimo)
+fmt.Println(bimo.Name)
+fmt.Println(bimo.Address)
+fmt.Println(bimo.Age)
+
+adam := Customer{"Adam Saputra", "Indonesia", 17}
+
+fmt.Println(adam)
+fmt.Println(adam.Name)
+fmt.Println(adam.Address)
+fmt.Println(adam.Age)
+```
+
+## Struct Method
+
+- `struct` adalah tipe data seperti tipe data lainnya, dia bisa digunakan sebagai parameter untuk function.
+- Namun jika kita ingin menambahkan method ke dalam structs, sehingga seakan-akan sebuah struct memiliki function.
+- Method adalah function.
+
+### Kode : Struct Method
+
+```go
+func (customer Customer) sayHi(name string) {
+  fmt.Println("Hello,", name, "My Name is", customer.Name, "salam kenal.")
+}
+
+func (customer Customer) sayHello() {
+	fmt.Println("Hello, My Neme is", customer.Name)
+}
+
+func main() {
+  yusril := Customer{Name: "Yusril Arzaqi"}
+  yusril.sayHello() // Hello, My Neme is Yusril Arzaqi
+  yusril.sayHi("Bimo") // Hello, Bimo My Name is Yusril Arzaqi salam kenal.
+}
+```
