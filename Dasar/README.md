@@ -1431,3 +1431,48 @@ func main() {
   yusril.sayHi("Bimo") // Hello, Bimo My Name is Yusril Arzaqi salam kenal.
 }
 ```
+
+## Interface
+
+- `interface` adalah tipe data Abstract, dia tidak memiliki implementasi langsung.
+- Sebuah `interface` berisikan definisi-definisi method.
+- Biasanya `interface` digunakan sebagai kontrak.
+
+### Kode : Interface
+
+```go
+type HasName interface {
+  GetName() string
+}
+
+func SayHello(hasName HasName) {
+  fmt.Println("Hello", hasName.GetName())
+}
+```
+
+### Implementasi Interface
+
+- Setiap tipe data yang sesuai dengan kontrak interface, secara otomatis dianggap sebagai interface tersebut.
+- Sehingga kita tidak perlu mengimplementasikan interface secara manual.
+- Hal ini agak berbeda dengan bahasa pemrograman lain yang ketika memubat interface, kita harus menyebutkan secara eksplisit akan menggunakan intreface mana.
+
+### Kode : Implementasi Interface
+
+```go
+type Person struct {
+  Name string
+}
+
+func (person Person) GetName() string {
+  return person.Name
+}
+
+
+func main() {
+  yusril := Person{Name: "Yusril Arzaqi"}
+  myName := yusril.GetName()
+  SayHello(yusril)
+  fmt.Println(myName)
+}
+```
+
