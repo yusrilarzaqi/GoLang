@@ -1228,5 +1228,99 @@ func main() {
 ### Kode : Closures
 
 ```go
+func main() {
+  name := "Yusril"
+  counter := 0
 
+  increment := func() {
+    const name = "Dimas"
+    fmt.Println("Increment")
+    counter++; // counter akan bisa di akses
+  }
+
+  increment()
+  increment()
+  fmt.Println(counter)
+  fmt.Println(name)
+}
 ```
+
+## Defer, Painc dan Revocer
+
+### Apa itu Defer
+
+- Defer function adalah function yang bisa kita jadwalkan untuk dieksekusi setelah sebuah function selesai dari eksekusi.
+- Defer function akan selalu dieksekusi walaupun terjadi error di function yang dieksekusi.
+
+### Kode : Defer
+
+```go
+func logging() {
+  fmt.Println("Selesai memanggil function")
+}
+
+func runApplication() {
+  defer logging()
+  fmt.Println("Run Application")
+}
+
+func main() {
+  runApplication()
+}
+```
+
+### Panic
+
+- Panic function adalah function yang bisa kita gunakan untuk menghentikan program.
+- Panic function biasanya dipanggil ketika terjadi error pada saat program kita berjalan.
+- Saat `panic` function biasanya dipanggil, program akan terhenti, namun `defer` function tetap akan dieksekusi.
+
+### Recover
+
+- Recover adalah function yang bisa kita gunakan untuk menangkap data `panic`.
+- Dengan `recover` process `panic` akan terhenti, sehingga program akan tetap berjalan.
+
+#### Kode : Recover Salah
+
+```go
+func endApp() {
+  fmt.Prinln("Selesai memanggil function")
+}
+func runApp(error bool) {
+  defer endApp()
+  if error {
+    panic("ERROR")
+  }
+  result := recover()
+  fmt.Println("Terjadi Error", result)
+  rmt.Println("Aplikasi berjalan")
+}
+
+func main() {
+  runApp(true)
+}
+```
+
+#### Kode : Recover Benar
+
+```go
+func endApp() {
+  fmt.Println("Selesai memanggil function")
+  result := recover()
+  fmt.Println("Terjadi ERROR", result)
+}
+
+func runApp(error bool) {
+  defer endApp();
+  if error {
+    panic("Error")
+  }
+  fmt.Println("Aplikasi berjalan")
+}
+
+func main() {
+  runApp(ture)
+}
+```
+
+
