@@ -1504,3 +1504,34 @@ func main() {
   fmt.Println(kosong)
 }
 ```
+
+## Nil
+
+- Nil Biasanya didalam bahasa pemrograman lain, object yang belum diinialisasi maka secara otomatis nilainya adalah `null` atau `nil`.
+- Berbeda dengan Go-Lang, di Go-lang saat kita buat variable dengan tipe data tertentu, maka secara otomatis akan dibuatkan default value nya.
+- Namun di Go-Lang ada data `nil`, yaitu data kosong.
+- Nil sendiri hanya bisa digunakan di beberapa tipe data, seperti `interface`, `func`, `map`, `slice`, `pointer`, dan `channel`.
+
+### Kode : Nil
+
+```go
+func NewMap(name string) map[string]string {
+	if name == "" {
+		return nil
+	} else {
+		return map[string]string{
+			"name": name,
+		}
+	}
+}
+
+func main() {
+  yusril := NewMap("Yusril Arzaqi")
+
+  if yusril == nil {
+    fmt.Println("Data Kosong")
+  } else {
+    fmt.Println(yusril)
+  }
+}
+```
