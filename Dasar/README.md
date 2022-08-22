@@ -1791,3 +1791,39 @@ func main() {
   fmt.Println(address) // akan berubah
 }
 ```
+
+## Pointer di Method
+
+- Walaupun method akan menempel di struct, tapi sebenarnya data struct yang diakses di dalam method adalah _pass by value_.
+- Sangat direkomendasikan menggunakan pointer di method, sehingga tidak boros memory karena harus selalu diduplikasi ketika memanggil mehod
+
+### Kode : Pointer di Method
+
+```go
+func (man Man) Married() {
+  man.Name = "Mr, " + man.Name
+  println(man.Name)
+}
+
+func main() {
+  yusril := Man{"Yusril"}
+  fmt.Println(yusril)
+  yusril.Married()
+  fmt.Println(yusril)
+}
+```
+
+---
+
+```go
+func (man *Man) Married() {
+  return "Mr. " + man.Name
+}
+
+func main() {
+  yusril := Man{"Yusril"}
+  fmt.Println(yusril)
+  yusril.Married()
+  fmt.Println(yusril)
+}
+```
