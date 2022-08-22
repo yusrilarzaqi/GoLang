@@ -1597,9 +1597,145 @@ func main() {
 
 ## Pointer
 
+- Pointer adalah kemampuan membuat reference ke lokasi data di memory yang sama, tanpa menduplikasi data yang sudah ada.
+- Sederhananya, dengan kemampuan pointer, kita bisa membuat _pass by reference_
+
 ### Pass by Value
 
 - Secara default di Go-Lang semua variable itu di passing by value, bukan by reference.
 - Artinya, jika kita mengirim sebuah variable ke dalam function, method atau variable lain, sebenarnya yang dikirim adalah duplikasi value nya.
 
 ### Kode : Pass by Value
+
+```go
+type Address struct {
+  City, Province, Country string
+}
+
+func main() {
+  address1 := Address{
+    "Semarang",
+    "Jawa Tengah",
+    "Indonesia",
+  }
+
+  address2 := address1
+  address2.City = "Demak"
+
+  fmt.Println(address1) // address1 tidak berubah
+  fmt.Println(address2)
+}
+```
+
+### Penjelasan Detail Passing by Value
+
+![Penjelasan Detail Passing by Value](./img/Penjelasan-Detail-Pass-by-Value.png)
+
+### Operator & (pointer)
+
+- Untuk memubat sebuah variable dengan nilai pointer ke variable yang lain, kita bisa menggunakan opertaor `&` diikuti dengan nama variablenya
+
+### Kode : Operator & (pointer)
+
+```go
+func main() {
+  address1 := Address{
+    "Semarang",
+    "Jawa Tengah",
+    "Indonesia",
+  }
+
+  address2 := &address1
+  address2.City = "Demak"
+
+  fmt.Println(address1) // address1 berubah
+  fmt.Println(address2)
+}
+```
+
+### Operator \* (pointer golang)
+
+- Saat kita merubah variable pointer, maka yang berubah hanya variable tersebut.
+- Semua variable yang mengacu ke data yang sama tidak akan berubah.
+- Jika kita ingin mengubah variable yang menhacu ke data tersebut, kita bisa menggunakan operator \*
+
+### Kode : Operator \* (pointer golang)
+
+Tidak Menggunakan pointer
+
+```go
+func main() {
+  address1 := Address{
+    "Semarang",
+    "Jawa Tengah",
+    "Indonesia",
+  }
+
+  address2 := &address1
+  address2.City = "Demak"
+
+  address2 = &Address{"Jakarta", "DKI Jakarta", "Indonesia"}
+
+  fmt.Println(address0) // address1 akan berubah
+  fmt.Println(address1)
+}
+```
+
+---
+
+Menggunakan pointer
+
+```go
+func main() {
+  address0 := Address{
+    "Semarang",
+    "Jawa Tengah",
+    "Indonesia",
+  }
+
+  address1 := &address1
+  address1.City = "Demak"
+  var address2 *Address = &address1
+
+  fmt.Println(address1)
+
+  *address1 = Address{"Jakarta", "DKI Jakarta", "Indonesia"}
+
+  fmt.Println(address0) // address1 akan berubah
+  fmt.Println(address1) // berubah menyerupai address1
+  fmt.Println(address2) // menjadi address1
+}
+```
+
+### Pass by Reference dengan Pointer
+
+![Pass by Reference dengan Pointer](./img/Pass-by-Refrence-dengan-Pointer.png)
+
+### Tanpa Operator \*
+
+![Tanpa Operator](./img/Tanpa-Operator*.png)
+
+### Dengan Operator \*
+
+![Dengan Operator](./img/dengan-operator*.png)
+
+### Function `new`
+
+- Sebelumnya untuk membuat pointer dengan menggunakan operator \&.
+- Go-Lang juga memiliki function `new` yang biasa digunakan untuk membuat pointer.
+- Namun function `new` hanya mengembalikan pointer ke data kosong, artinya tidak ada data awal.
+
+### Kode : Function `new`
+
+```go
+func main() {
+  alamat1 := new(Address)
+  alamat2 := alamat1
+
+  alamat2.Country = "Indonesia"
+
+  fmt.Println(alamat1) // alamat 1 akan berubah
+  fmt.Println(alamat2)
+}
+```
+
