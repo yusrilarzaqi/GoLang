@@ -1535,3 +1535,71 @@ func main() {
   }
 }
 ```
+
+## Error Interface
+
+- Go-Lang memiliki interface yang digunakan sebagai kontrak untuk membuat error, nama interfacenya adalah error.
+
+```go
+// The error built-in interface
+type error interface {
+  Error() string
+}
+```
+
+## Type Assertions
+
+- Type Assertion merupakan kemampuan merubah tipe data menjadi tipe data yang diinginkan.
+- Fitur ini sering sekali digunakan ketika bertemu dengan data interface kosong.
+
+## Kode : Type Assertions
+
+```go
+func random() any {
+  return "OK"
+}
+
+func main() {
+  result := random()
+  resultString := result.(string)
+  fmt.Println(resultString)
+
+  resultInt := result.(int) // panic
+  fmt.Println(resultInt)
+}
+```
+
+### Type Assertions Menggunakan Switch
+
+- Saat salah menggunakan type assertions, maka bisa berakibat terjadi panic diaplikasi kita.
+- Jika panic dan tidak ter-recover, maka otomatis program kita akan mati.
+- Agar lebih aman, sebaliknya kita menggunakan `switch` expression untuk melakukan text assertions.
+
+### Kode : Type Assertions Menggunakan Switch
+
+```go
+func random() interface{} {
+  return "OK"
+}
+
+func main() {
+  result := random()
+  switch value := result.(type) {
+  case string:
+    fmt.Println("String", value)
+  case int:
+    fmt.Println("Int", value)
+  default:
+    fmt.Println("Unknown Type : ", value)
+  }
+}
+```
+
+## Pointer
+
+### Pass by Value
+
+- Secara default di Go-Lang semua variable itu di passing by value, bukan by reference.
+- Artinya, jika kita mengirim sebuah variable ke dalam function, method atau variable lain, sebenarnya yang dikirim adalah duplikasi value nya.
+
+### Kode : Pass by Value
