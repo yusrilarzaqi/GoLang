@@ -1739,3 +1739,55 @@ func main() {
 }
 ```
 
+## Pointer di Function
+
+- Saat kita membuat parameter di function, secara default adalah _pass by value_, artinya datanya akan di copy lalu dikirim ke function tersebut.
+- Oleh karena itu, jika kita mengubah data di dalam function, data yang aslinya tidak akan pernah berubah.
+- Hal ini membuat variable menjadi akan, karena tidak akan bisa diubah.
+- Namun kadang kita ingin membuat akan, karena tidak akan bisa diubah.
+- Untuk melakukan ini, kita juga bisa menggunakan pointer di function.
+- Untuk menjadikan sebuah parameter sebagai pointer, kita bisa menggunakan operator \* di parameternya.
+
+### Kode : Pointer di Function
+
+```go
+type Address struct {
+  City, Province, Country string
+}
+
+func ChangeAddressToIndonesia(address Address) {
+  address.Country = "Indonesia"
+}
+
+func main() {
+  address := Address{
+    "Semarang",
+    "JawaTengah",
+    "",
+  }
+
+  fmt.Println(address)
+  ChangeAddressToIndonesia(*address)
+  fmt.Println(address) // tidak akan berubah
+}
+```
+
+---
+
+```go
+func ChangeAddressToIndonesia(address *Address) {
+  address.Country = "Indonesia"
+}
+
+func main() {
+  address := Address{
+    "Semarang",
+    "JawaTengah",
+    "",
+  }
+
+  fmt.Println(address)
+  ChangeAddressToIndonesia(&address)
+  fmt.Println(address) // akan berubah
+}
+```
