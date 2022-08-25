@@ -1842,11 +1842,11 @@ export GOPATH="/home/yusril/Developments/GoLang"
 
 ## Package Import
 
-### Pakcage
+### Package
 
 - Package adalah tempat yang bisa digunakan untuk mengorganisir kode program yang kita buat di Go-Lang.
 - Dengan menggunakan package, kita bisa merapikan kode program yang kita buat.
-- Pakcage sendiri sebenarnya hanya direktori folder di sistem operasi kita.
+- package sendiri sebenarnya hanya direktori folder di sistem operasi kita.
 
 ```go
 package helper
@@ -1859,7 +1859,7 @@ func SayHello(name string) string {
 ### import
 
 - Secara standar, file Go-Lang hanya bisa mengakses file Go-Lang lainnya yang berada dalam package yang sama.
-- Jika kita ingin mengakses file Go-Lang yang berada diluar pakcage, maka kita bisa menggunakan imporjt.
+- Jika kita ingin mengakses file Go-Lang yang berada diluar package, maka kita bisa menggunakan imporjt.
 
 ### Kode : Import
 
@@ -1877,7 +1877,7 @@ func main() {
 
 - Di bahasa pemrograman lain, biasanya ada kata kunci yang bisa digunakan untuk menentukan access modifier terhadap suatu function dan variable.
 - Di Go-Lang, untuk menentukan access modifier, cukup dengan nama function atau variable.
-- Jika namanya diawali dengan, huruf besar, maka artinya bisa diakses dari pakcage lain, jika dimulai dengan huruf kecil, artinya tidak bisa diakses dari package lain.
+- Jika namanya diawali dengan, huruf besar, maka artinya bisa diakses dari package lain, jika dimulai dengan huruf kecil, artinya tidak bisa diakses dari package lain.
 
 ### Kode : Access Modifier
 
@@ -1896,3 +1896,49 @@ func SayHello(name string) string {
   return "Hello " + name
 }
 ```
+
+## Package Initialization
+
+- Saat kita membuat package, kita bisa membuat sebuah function yang akan diakses ketika package kita diakses.
+- Ini sanggat cocok ketika contohnya, jika package kita berisi function-function untuk berkomunikasi dengan database, kita membuat function inisialisasi untuk membuat koneksi ke database.
+- Untuk membuat function yang diakses secara otomatis ketika package diakses, kita cukup membuat function dengan nama init.
+
+### Kode : Package Initialization
+
+```go
+package database
+
+var connection string
+
+func init() {
+  connection = "MySQL"
+}
+
+func GetDatabase() string {
+  return connection
+}
+```
+
+---
+
+```go
+package main
+
+import (
+	"belajar-golang-dasar/database"
+	"fmt"
+)
+
+func main() {
+  result := database.GetDatabase()
+  fmt.Println(result)
+}
+```
+
+### Blank Identifier
+
+- Kadang kita hanya ingin menjalankan `init` function di package tanpa harus mengeksekusi salah satu function yang ada di package.
+- Secara defualt, Go-Lang akan komplen ketika ada package yang di import namun tidak digunakan.
+- Untuk menangani hal tersebut, kita bisa menggunakan blank identifier `_` sebelum nama package ketika melakukan import.
+
+##
