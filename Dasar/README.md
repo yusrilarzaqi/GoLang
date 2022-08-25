@@ -1833,3 +1833,66 @@ func main() {
 - Sebelumnya saat kita membuat project aplikasi Go-Lang kita belum membahas tentang GOPATH.
 - GOPATH adalah environment variable yang berisikan lokasi tempat kita menyimpan project dan library Go-Lang.
 - GOPATH wajib di buat ketika kita membuat aplikasi lebih dari satu file atau butuh menggunakan library dari luar.
+
+### Export
+
+```bash
+export GOPATH="/home/yusril/Developments/GoLang"
+```
+
+## Package Import
+
+### Pakcage
+
+- Package adalah tempat yang bisa digunakan untuk mengorganisir kode program yang kita buat di Go-Lang.
+- Dengan menggunakan package, kita bisa merapikan kode program yang kita buat.
+- Pakcage sendiri sebenarnya hanya direktori folder di sistem operasi kita.
+
+```go
+package helper
+
+func SayHello(name string) string {
+  return "Hello" + name
+}
+```
+
+### import
+
+- Secara standar, file Go-Lang hanya bisa mengakses file Go-Lang lainnya yang berada dalam package yang sama.
+- Jika kita ingin mengakses file Go-Lang yang berada diluar pakcage, maka kita bisa menggunakan imporjt.
+
+### Kode : Import
+
+```go
+package main
+
+import  "belajar-golang-dasar/helper"
+
+func main() {
+  helper.SayHello("Yusr")
+}
+```
+
+## Access Modifier
+
+- Di bahasa pemrograman lain, biasanya ada kata kunci yang bisa digunakan untuk menentukan access modifier terhadap suatu function dan variable.
+- Di Go-Lang, untuk menentukan access modifier, cukup dengan nama function atau variable.
+- Jika namanya diawali dengan, huruf besar, maka artinya bisa diakses dari pakcage lain, jika dimulai dengan huruf kecil, artinya tidak bisa diakses dari package lain.
+
+### Kode : Access Modifier
+
+```go
+package helper
+
+var version = "1.0.0" // tidak bisa diakses dari luar
+var Application = "golang"
+
+// Tidak bisa diakses dari luar package
+func sayGoodBye(name string) string {
+  return "Hello" + name
+}
+
+func SayHello(name string) string {
+  return "Hello " + name
+}
+```
