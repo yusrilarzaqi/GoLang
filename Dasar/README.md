@@ -1941,4 +1941,24 @@ func main() {
 - Secara defualt, Go-Lang akan komplen ketika ada package yang di import namun tidak digunakan.
 - Untuk menangani hal tersebut, kita bisa menggunakan blank identifier `_` sebelum nama package ketika melakukan import.
 
-##
+## Package OS
+
+- Go-Lang telah menyediakan banyak sekali package bawaan, saah satunya adalah package os.
+- Package os berisikan fungsionalitas untuk mengakses fitur sistem operasi secara indpenden (bisa digunakan disemua sistem operasi)
+- [OS](https://golang.org/pkg/os)
+
+### Kode Package os
+
+```go
+package main
+
+import (
+  "fmt"
+  "os"
+)
+
+func main() {
+  args := os.Args
+  fmt.Println(args)
+}
+```
