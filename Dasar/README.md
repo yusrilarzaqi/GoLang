@@ -1968,7 +1968,6 @@ func main() {
 - Package flag berisikan fungsionalitas untuk memparsing command line argument.
 - [flag](https://golang.org/pkg/flag)
 
-
 ## Kode : Package flag
 
 ```go
@@ -1994,3 +1993,20 @@ func main() {
   fmt.Println("number : ", *number)
 }
 ```
+
+## Package Strings
+
+- Package strings adalah package yang berisika function-function untuk memanipulasi tipe data Strings.
+- Ada baynak sekali function yang bisa kita gunakan.
+- [strings](https://golang.org/pkg/strings/)
+
+### Beberapa Function di Package strings
+
+|                Fucntion                |                     Kegunaan                     |
+| :------------------------------------: | :----------------------------------------------: |
+|     `strings.Trim(string, cutset)`     |       Memotong cutset di awal akhir string       |
+|       `strings.ToLower(string)`        | Membuat semua karakter string menjadi lower case |
+|       `strings.ToUpper(string)`        | Membuat semua karakter string menjadi upper case |
+|   `strings.Split(string, separator)`   |      Memotong string berdasarkan separator       |
+|   `strings.Contains(string, search)`   |  Mengecek apakah string mengandung string lain   |
+| `strings.ReplaceAll(string, from, to)` |      Mengubah semua string dari from ke to       |
