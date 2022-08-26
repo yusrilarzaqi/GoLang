@@ -2010,3 +2010,62 @@ func main() {
 |   `strings.Split(string, separator)`   |      Memotong string berdasarkan separator       |
 |   `strings.Contains(string, search)`   |  Mengecek apakah string mengandung string lain   |
 | `strings.ReplaceAll(string, from, to)` |      Mengubah semua string dari from ke to       |
+
+### Kode : Package Strings
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+  fmt.Println(strings.Contains("Yusril Arzaqi Mantap","Yusril"))
+  fmt.Println(strings.Split("Yusril Arzaqi Mantap", " "))
+  fmt.Println(strings.ToLower("Yusril Arzaqi"))
+  fmt.Println(strings.ToUpper("Yusril Arzaqi"))
+  fmt.Println(strings.Trim("                  Yusril Arzaqi           ", " "))
+  fmt.Print(strings.ReplaceAll("Yusril Yusril Yusril Yusril Yusril", "Yusril", "Arzaqi"))
+}
+```
+
+## Package strconv (string conversion)
+
+- sebaliknya kita sudah belajar cara konversi tipe data, misal dari `int32` ke `int64`.
+- Bagaimana jika kita butuh melakukan konversi yang tipe datanya berbeda ? Misal dari int ke string, atau sebaliknya.
+- Hal tersebut bisa kita lakukan dengan bantukan package `strconv` (string conversion)
+- [strconv](https://golang.org/pkg/strconv)
+
+### Beberapa Function di Package `strconv`
+
+|            Function             |           Kegunaan           |
+| :-----------------------------: | :--------------------------: |
+|   `strconv.parseBool(string)`   | Mengubah `string` ke `bool`  |
+|  `strconv.parseFloat(string)`   |  Mengubah `string` `float`   |
+|   `strconv.parseInt(string)`    | Mengubah `string` ke `int64` |
+|   `strconv.FormatBool(bool)`    | Mengubah `bool` ke `string`  |
+| `strconv.FormatFloat(int, ...)` | Mengubah `float64` ke string |
+|  `strconv.FormatInt(int, ...)`  |  Mengubah `int64` ke string  |
+
+```go
+package main
+
+import (
+	"fmt"
+	"strconv"
+)
+
+### Kode : Package `strconv`
+
+func main() {
+  boolean, err := strconv.ParseBool("true")
+
+  if err == nil {
+    fmt.Println(boolean)
+  } else {
+    fmt.Println("Error", err.Error())
+  }
+}
+```
