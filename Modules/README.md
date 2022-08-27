@@ -65,3 +65,9 @@ func main() {
 
 - Untuk upgrade dependency ke versi terbaru, kita bisa mengubah isi `go.mod`, lalu mengubah tagnya menjadi tag terbaru.
 - Untuk download versi terbaru, gunakan perintah `go get`.
+
+## Major Upgrade
+
+- Major upgrade biasanya terjadi dikarenakan ada perubahan pada isi kode program kita, sehingga membuatnya tidak backward compatible.
+- Sebaliknya hal ini sebisa mungkin dihindari.
+- Namun jika tidak bisa dihindari, strategy terbaik adalah merubah nama module.
