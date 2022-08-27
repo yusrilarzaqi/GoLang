@@ -2049,16 +2049,9 @@ func main() {
 | `strconv.FormatFloat(int, ...)` | Mengubah `float64` ke string |
 |  `strconv.FormatInt(int, ...)`  |  Mengubah `int64` ke string  |
 
-```go
-package main
-
-import (
-	"fmt"
-	"strconv"
-)
-
 ### Kode : Package `strconv`
 
+```go
 func main() {
   boolean, err := strconv.ParseBool("true")
 
@@ -2069,3 +2062,19 @@ func main() {
   }
 }
 ```
+
+## Package Math
+
+- Package math merupakan package yang berisikan constant dan fungsi Matematika.
+- [Math](https://golang.org/pkg/math/)
+
+### Beberapa Function di Package math
+
+|           Function           |                                  Kegunaan                                  |
+| :--------------------------: | :------------------------------------------------------------------------: |
+|    `math.Round(float64)`     | Membulatkan `float64` keatas atau kebawah, sesuai dengan yang paling dekat |
+|    `math.Floor(float64)`     |                       Membulatkan `float64` kebawah                        |
+|     `math.Ceil(float64)`     |                        Membulatkan `float64` keatas                        |
+| `math.Max(float64, float64)` |                 Mengembalikan nilai `float64` paling besar                 |
+| `math.Min(float64, float64)` |                 Mengembalikan nilai `float64` paling kecil                 |
+
