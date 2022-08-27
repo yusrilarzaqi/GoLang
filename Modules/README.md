@@ -57,4 +57,11 @@ func main() {
 }
 ```
 
-##
+## Upgrade Module
+
+- Untuk melakukan upgrade module, kita hanya cukup membuat tag baru di Git.
+
+## Upgrade Dependency
+
+- Untuk upgrade dependency ke versi terbaru, kita bisa mengubah isi `go.mod`, lalu mengubah tagnya menjadi tag terbaru.
+- Untuk download versi terbaru, gunakan perintah `go get`.
