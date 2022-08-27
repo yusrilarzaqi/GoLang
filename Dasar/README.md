@@ -2350,3 +2350,36 @@ func IsValid(data any) bool {
 |  `Regexp.MatchString(string) bool`  |      Mengecek apakah Regexp match dengan string       |
 | `Regexp.FindAllString(string, max)` | Mencari string yang match dengan maximum jumlah hasil |
 
+### Kode : Package Regexp
+
+```go
+package main
+
+import (
+	"fmt"
+	"regexp"
+)
+
+
+func main() {
+	regex := regexp.MustCompile(`e([a-z])`) 
+
+	fmt.Println(regex.MatchString("eko")) // true
+	fmt.Println(regex.MatchString("edo")) // true
+	fmt.Println(regex.MatchString("eKo")) // false
+
+  search := regex.FindAllString("eko edo egi ego e1o eto", 10)
+
+  for _, v := range search {
+    fmt.Println(v)
+  }
+}
+```
+
+## Materi selanjutnya ?
+
+- Go-Lang Unit test
+- Go-Lang Modules
+- Go-Lang concurrency
+- Go-Lang Database
+- Go-Lang Web
