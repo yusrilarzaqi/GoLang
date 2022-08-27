@@ -2334,3 +2334,19 @@ func IsValid(data any) bool {
   return true
 }
 ```
+
+## Package regexp
+
+- Package regexp adalah utilitas di Go-Lang untuk melakukan pencarian regular exporession.
+- Regular expression di Go-Lang menggunakan lirary C yang dibuat Google bernama RE2.
+- [RE2 Symtax](https://github.com/google/re2/wiki/syntax)
+- [regex](https://golang.org/pkg/regexp)
+
+### Beberapa Function di package regexp
+
+|              Function               |                       Kegunaan                        |
+| :---------------------------------: | :---------------------------------------------------: |
+|    `regexp.MustCompile(string)`     |                    Membuat Regexp                     |
+|  `Regexp.MatchString(string) bool`  |      Mengecek apakah Regexp match dengan string       |
+| `Regexp.FindAllString(string, max)` | Mencari string yang match dengan maximum jumlah hasil |
+
