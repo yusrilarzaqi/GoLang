@@ -2040,14 +2040,14 @@ func main() {
 
 ### Beberapa Function di Package `strconv`
 
-|            Function             |           Kegunaan           |
-| :-----------------------------: | :--------------------------: |
-|   `strconv.parseBool(string)`   | Mengubah `string` ke `bool`  |
-|  `strconv.parseFloat(string)`   |  Mengubah `string` `float`   |
-|   `strconv.parseInt(string)`    | Mengubah `string` ke `int64` |
-|   `strconv.FormatBool(bool)`    | Mengubah `bool` ke `string`  |
-| `strconv.FormatFloat(int, ...)` | Mengubah `float64` ke string |
-|  `strconv.FormatInt(int, ...)`  |  Mengubah `int64` ke string  |
+|            Function             |            Kegunaan            |
+| :-----------------------------: | :----------------------------: |
+|   `strconv.parseBool(string)`   |  Mengubah `string` ke `bool`   |
+|  `strconv.parseFloat(string)`   |   Mengubah `string` `float`    |
+|   `strconv.parseInt(string)`    |  Mengubah `string` ke `int64`  |
+|   `strconv.FormatBool(bool)`    |  Mengubah `bool` ke `string`   |
+| `strconv.FormatFloat(int, ...)` | Mengubah `float64` ke `string` |
+|  `strconv.FormatInt(int, ...)`  |  Mengubah `int64` ke `string`  |
 
 ### Kode : Package `strconv`
 
@@ -2078,3 +2078,58 @@ func main() {
 | `math.Max(float64, float64)` |                 Mengembalikan nilai `float64` paling besar                 |
 | `math.Min(float64, float64)` |                 Mengembalikan nilai `float64` paling kecil                 |
 
+### Kode : Package Math
+
+```go
+package main
+
+import (
+	"fmt"
+	"math"
+)
+
+func main() {
+  fmt.Println(math.Round(1.7))
+  fmt.Println(math.Round(1.4))
+  fmt.Println(math.Floor(1.7))
+  fmt.Println(math.Ceil(1.4))
+
+  fmt.Println(math.Max(10, 20))
+  fmt.Println(math.Min(10, 20))
+}
+```
+
+## Package container / list
+
+- Pcakage container / list adalah implementasi struktur data double linked list di Go-Lang.
+- [container list](https://golang.org/pkg/container/list)
+
+### Struktur Data Double Linked List
+
+![Double Linked](./img/double-linked.png)
+
+### Kode : Package container / list
+
+```go
+package main
+
+import (
+	"container/list"
+	"fmt"
+)
+
+func main() {
+  data := list.New()
+  data.PushBack("Yusril")
+  data.PushBack("Arzaqi")
+  data.PushBack("Bimo")
+  data.PushBack("Alamsyah")
+
+  for e := data.Front(); e != nil; e = e.Next() {
+    if e.Value == "Yusril" {
+      fmt.Println("Horay")
+    }
+    fmt.Println(e.Value)
+  }
+}
+```
