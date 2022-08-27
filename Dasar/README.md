@@ -2145,3 +2145,86 @@ func main() {
 ![Struktur Data Circular List](./img/data-circular-list.png)
 
 ### Kode : Package container / ring
+
+```go
+package main
+
+import (
+	"container/ring"
+	"fmt"
+	"strconv"
+)
+
+func main() {
+	data := ring.New(5)
+
+	for i := 0; i < data.Len(); i++ {
+		data.Value = "Value " + strconv.FormatInt(int64(i), 10)
+		data = data.Next()
+	}
+
+	data.Do(func(value any) {
+		fmt.Println(value)
+	})
+}
+```
+
+## Package sort
+
+- Package sort adalah package yang berisikan utilitas untuk proses pengurutan.
+- Agar data kita bisa diurutkan, haruus mengimplementasikan kontrak di interface `sort.Interface`.
+- [sort](https://golang.org/pkg/sort)
+
+### `sort.interface`
+
+```go
+type Interface interface {
+  Len() int
+  Less(i, j int) bool
+  Swap(i, j int)
+}
+```
+
+### Kode : Package `sort`
+
+```go
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+type User struct {
+  Name string
+  Age int
+}
+
+type UserSlide []User
+
+func (userSlice UserSlide) Len() int {
+  return len(userSlice)
+}
+
+func (userSlice UserSlide) Less(i, j int) bool {
+  return userSlice[i].Age < userSlice[j].Age
+}
+
+func (userSlice UserSlide)  Swap(i, j int) { 
+  userSlice[i], userSlice[j] = userSlice[j], userSlice[i]
+}
+
+func main() {
+  users := UserSlide {
+    {"Yusril", 18},
+    {"Arzaqi", 18},
+    {"Bimo", 17},
+    {"Alamsyah", 17},
+    {"Adam", 19},
+  }
+
+  fmt.Printf("users: %v\n", users)
+  sort.Sort(users)
+  fmt.Printf("users: %v\n", users)
+}
+```
