@@ -38,4 +38,23 @@
 - Untuk merilis module, kita hanya perlu membuat Tag di Git.
 - [go-say-hello](https://github.com/arzaqiyusril/go-say-hello)
 
+## Menambah Dependency
+
+`go get nama-module`
+
+### Cara menggunakan module dari github
+
+```go
+package main
+
+import (
+	"fmt"
+	go_say_hello "github.com/arzaqiyusril/go-say-hello"
+)
+
+func main() {
+	fmt.Println(go_say_hello.SayHello("Yusril"))
+}
+```
+
 ##
