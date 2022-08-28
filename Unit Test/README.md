@@ -321,4 +321,33 @@ func TestMain(m *testing.M) {
 }
 ```
 
-###
+## Sub Test
+
+- Go-Lang mendukung fitur pembuatan function unit test di dalam function unit test.
+- Fitur ini memang sedikit aneh dan jarang sekali dimiliki di unit test dibahasa pemrograman yang lainnya.
+- Untuk membuat sub test, kita bisa menggunakan function `Run()`.
+
+### Kode : Membuat Sub Test
+
+```go
+func TestSubTest(t *testing.T) {
+  t.Run("Yusril", func(t *testing.T) {
+    result := HelloWorld("Yusril")
+    require.Equal(t, "Hello Yusril", result)
+  })
+
+  t.Run("Arzaqi", func(t *testing.T) {
+    result := HelloWorld("Arzaqi")
+    require.Equal(t, "Hello Arzaqi", result)
+  })
+}
+```
+
+### Menjalankan Hanya Sub Test
+
+- Kita sudah tahu jika ingin menjalankan sebuah unit test function, kita bisa gunakan perintah :
+  - `go test -run TestNamaFunction`.
+- Jika kita ingin menjalankan hanya salah satu sub test, kita bisa gunakan perintah :
+  - `go test -run TestNamaFunction/NamaSubTest`.
+- Atau untuk semua test semua test di semua function, kita bisa gunakan perintah :
+  - `go test -run /NamaSubTest`
