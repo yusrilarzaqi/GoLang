@@ -123,13 +123,17 @@ func TestHelloWorld(t *testing.T) {
 
 ### Menjalankan Unit Test
 
-- Untuk menjalankan unit test kita bisa menggunakan perintah `go test`
-- Jika kita ingin lihat detail function test apa saja yang sudah di running, kita bisa gunakan perintah : `go test -v`.
-- Dan jika kita ingin memilih function unit test mana yang ingin dirunnung, kita bisa gunakan perintah : `go test -v -run TestNamaFunction`
+- Untuk menjalankan unit test kita bisa menggunakan perintah :
+  - `go test`
+- Jika kita ingin lihat detail function test apa saja yang sudah di running, kita bisa gunakan perintah :
+  - `go test -v`.
+- Dan jika kita ingin memilih function unit test mana yang ingin dirunnung, kita bisa gunakan perintah :
+  - `go test -v -run TestNamaFunction`
 
 ### Menjalankan Semua Unit Test
 
-- Jika kita ingin menjalankan semua unit test dari top folder modulenya, kita bisa gunakan perintah : `go test ./..`
+- Jika kita ingin menjalankan semua unit test dari top folder modulenya, kita bisa gunakan perintah :
+  - `go test ./..`
 
 ## Menggagalkan Unit Test
 
@@ -205,6 +209,63 @@ func TestHelloWorldAlamsyah(t *testing.T) {
   }
 
   fmt.Println("Tidak Dieksekusi")
+}
+```
+
+## Assertion
+
+- Melakukan pengecekan di unit test secara menual menggunakan `if`, `else` sangatlah menyebalkan.
+- Apalagi jika result yang harus di cek itu banyak.
+- Oleh karena itu, sangat disarankan untuk menggunakan Assertion untuk melakukan pengecekan.
+- Sayangnya, Go-Lang tidak menyediakan package untuk assertion, sehingga kita butuh menambahkan library untuk melakukan assertion ini.
+
+### Testify
+
+- Salah satu library assertion yang paling populer di Go-Lang adalah Testify.
+- Kita bisa menggunakan library ini untuk melakukan assertion terhadap result data di unit test.
+- [testify](https://github.com/stretchr/testify)
+- Kita bisa menambahkan di Go module kita :
+  - `go get github.com/stretchr/testify`
+
+### `assert` vs `require`
+
+- Testify menyediakan dua package assertion, yaitu assert dan require.
+- Saat kita menggunakan assert akan memanggil `Fail()`, artinya eksekusi unit test akan tetap dilanjutkan.
+- Sedangkan jika kita menggunakan `require`, jika pengecekan gagal, maka require akan memanggil `FailNow()`, artinya eksekusi unit test tidak akan dilanjutkan.
+
+---
+
+```go
+package helper
+
+import (
+	"fmt"
+	"testing"
+	"github.com/stretchr/testify/assert"
+)
+
+func TestHelloWorldAssertion(t *testing.T) {
+	result := HelloWorld("Yusril")
+	assert.Equal(t, "Hello Yusril", result, "Result must be Hello Yusril")
+	fmt.Println("Dieksekusi")
+}
+```
+
+---
+
+```go
+package helper
+
+import (
+	"fmt"
+	"testing"
+	"github.com/stretchr/testify/require"
+)
+
+func TestHelloWorldRequire(t *testing.T) {
+  result := HelloWorld("Yusril")
+  require.Equal(t, "Hell Yusril", result)
+  fmt.Println("tidak dieksekusi")
 }
 ```
 
