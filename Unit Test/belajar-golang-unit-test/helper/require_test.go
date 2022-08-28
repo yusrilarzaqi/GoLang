@@ -8,6 +8,6 @@ import (
 
 func TestHelloWorldRequire(t *testing.T) {
   result := HelloWorld("Yusril")
-  require.Equal(t, "Hell Yusril", result)
+  require.Equal(t, "Hello Yusril", result)
   fmt.Println("tidak dieksekusi")
 }
