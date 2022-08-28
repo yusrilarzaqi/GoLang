@@ -131,4 +131,81 @@ func TestHelloWorld(t *testing.T) {
 
 - Jika kita ingin menjalankan semua unit test dari top folder modulenya, kita bisa gunakan perintah : `go test ./..`
 
-###
+## Menggagalkan Unit Test
+
+- Menggagalkan unit test menggunakan `panic` bukanlah hal yang bagus.
+- Go-Lang sendiri sudah menyediakan cara untuk menggagalkan unit test menggunakan `testing.T`.
+- Terdapat function `fail()`, `FailNow()`, `Error()` dan `Fata()` jika kita ingin menggagalkan unit test.
+
+### `t.Fail()` dan `t.FailNow()`
+
+- Terdapat dua function untuk menggagalkan unit test, yaitu `Fail()` dan `FailNow()`. LAntas apa bedanya ?
+- `Fail()` akan menggagalkan unit test, namun tetap melanjutakan eksekusi unit test. Namun diakhir ketika selesai, maka unit test tersebut dianggap gagal.
+- `FailNow()` akan menggaalkan unit test saat ini juga, tanpa melanjutkan eksekusi unit test.
+
+---
+
+```go
+func TestHelloWorldYusril(t *testing.T) {
+	result := HelloWorld("Yusril")
+
+	if result != "Hello Yusril" {
+		// unit test failed
+		t.Fail()
+	}
+
+	fmt.Println("TestHelloWorldYusril done")
+}
+```
+
+---
+
+```go
+func TestHelloWorldArzaqi(t *testing.T) {
+	result := HelloWorld("Arzaqi")
+
+	if result != "Hello Arzaqi" {
+		// unit test failed
+		t.FailNow()
+	}
+
+	fmt.Println("TestHelloWorldArzaqi done")
+}
+```
+
+### `t.Error(args...)` dan `t.Fatal(args...)`
+
+- Selain `Fail()` dan `FailNow()`, ada juga `Error()` dan `Fatal()`.
+- `Error()` function lebih seperti melakukan log `print` error, namun setelah melakukan log error, dia akan secara otomatis memanggil function `Fail()`, sehingga mengakibatkan unit test dianggap gagal.
+- Namun karena hanya memanggil `Fail()`, artinya eksekusi unit test akan tetap berjalan sampai selesai.
+- `Fatal()` mirip dengan `Error()`, hanya saja, setelah melakukan log error, dia akan memanggil `FailNow()`, sehingga mengakibatkan eksekusi unit test berhenti.
+
+---
+
+```go
+func TestHelloWorldBimo(t *testing.T)  {
+  result := HelloWorld("Bimo")
+
+  if result != "Hello Bimo" {
+    t.Error("Harusnya Hello Bimo")
+  }
+
+  fmt.Println("Dieksekusi")
+}
+```
+
+---
+
+```go
+func TestHelloWorldAlamsyah(t *testing.T) {
+  result := HelloWorld("Alamsyah")
+
+  if result != "Hello Alamsyah" {
+    t.Fatal("Harusnya Hello Alamsyah")
+  }
+
+  fmt.Println("Tidak Dieksekusi")
+}
+```
+
+##
