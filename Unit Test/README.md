@@ -269,4 +269,23 @@ func TestHelloWorldRequire(t *testing.T) {
 }
 ```
 
+## Skip Test
+
+- Kadang dalam keadaan tertentu ingin membatalkan eksekusi unit test.
+- Di Go-Lang juga kita bisa membatalkan eksekusi unit test jika kita mau.
+- Untuk membatalkan unit test kita bisa menggunakan function `Skip()`.
+
+### Kode : Skip Test
+
+```go
+func TestSkip(t *testing.T) {
+  if runtime.GOOS == "linux" {
+    t.Skip("Unit test tidak bisa jalan di Linux");
+  }
+
+  result := HelloWorld("Yusril")
+  require.Equal(t, "Hello Yusril", result)
+}
+```
+
 ##
