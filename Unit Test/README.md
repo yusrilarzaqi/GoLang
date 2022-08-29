@@ -351,3 +351,53 @@ func TestSubTest(t *testing.T) {
   - `go test -run TestNamaFunction/NamaSubTest`.
 - Atau untuk semua test semua test di semua function, kita bisa gunakan perintah :
   - `go test -run /NamaSubTest`
+
+## Table Test
+
+- Sebelumnya kita sudah belajar tentan sub test.
+- Jika diperhatikan, sebenarnya dengan sub test, kita bisa membuat test secara dinamis.
+- Dan fitur sub test ini, biasa digunakan oleh programmer Go-Lang untuk membuat test dengan konsep table test.
+- Table test yaitu dimana kita menyediakan data berupa slice yang berisi parameter dan ekspetasi hasil dari unit test.
+- Lalu slice tersebut kita iterasi menggunakan sub test.
+
+### Kode : Table Test
+
+```go
+package helper
+
+import (
+	"testing"
+	"github.com/stretchr/testify/assert"
+)
+
+func TestHelloWorldTable(t *testing.T) {
+	tests := [...]struct {
+		name, request, expected string
+	}{
+		{
+			name:     "HelloWold(Yusril)",
+			request:  "Yusril",
+			expected: "Hello Yusril",
+		},
+    {
+      name: "HelloWorld(Bimo)",
+      request: "Bimo",
+      expected: "Hello Bimo",
+    },
+    {
+      name: "HelloWorld(Arzaqi)",
+      request: "Arzaqi",
+      expected: "Hello Arzaqi",
+    },
+	}
+
+  for _, test := range tests {
+    t.Run(test.name, func(t *testing.T) {
+      result := HelloWorld(test.request)
+      require.Equal(t, test.expected, result)
+    })
+  }
+}
+```
+
+## Mock
