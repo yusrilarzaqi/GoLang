@@ -486,3 +486,31 @@ func (service CategoryService) Get(id string) (*entity.Category, error) {
 - Cara kerja benchmark di Go-Lang sangat sederhana.
 - Gimana kita hanya perlu membuat perulangan sejumlah `N` attribute.
 - Nanti secara otomatis Go-Lang akan melakukan eksekusi sejumlah perulangan yang ditentukkan secara otomatis, lalu mendeteksi berapa lama proses tersebut berjalan, dan disimpulkan performa benchmark nya dalam waktu.
+
+## Benchmark Function
+
+- Mirip seperti unit test, untuk benchmark pun, di Go-Lang sudah ditentukan nama functionnya, harus diawali dengan kata `Benchmark`, misal `BenchmarkHelloWorld`, `BenchmarXxx`.
+- Selain itu, harus memiliki parameter `b *testing.B`.
+- Dan tidak boleh mengembalikan return value.
+- Untuk nama file benchmark, sama seperti unit test, diakhiri dengan `_test`, misal `hello_world_test.go`.
+
+### Kode : Membuat Benchmark Function
+
+```go
+func BenchmarkHelloWorld(b *testing.B) {
+  for i := 0; i < b.N; i++ {
+    HelloWorld("Yusril")
+  }
+}
+```
+
+### Menjalankan Benchmark
+
+- Untuk menjalankan seluruh benchmark di module, kita bisa menggunakan perintah sama seperti test, namun ditambahkan parameter bench :
+  - `go test -v -bench=`.
+- Jika kita hanya ingin menjalankan benchmark tanpa unit test, kita bisa gunakan perintah :
+  - `go test -v -run=NotMathUnitTest -bench=`.
+- Kode diatas selain menjalankan benchmark tertentu, kita bisa gunakan perintah :
+  - `go test -v -run=NotMatchUnitTest -bench=BenchmarkTest`.
+- Jika kita menjalankan benchmark di root module dan ingin semua module dijalankan, kita bisa gunakan perintah :
+  - `go test -v -bench=./...`
