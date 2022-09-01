@@ -139,7 +139,7 @@ func TestHelloWorld(t *testing.T) {
 
 - Menggagalkan unit test menggunakan `panic` bukanlah hal yang bagus.
 - Go-Lang sendiri sudah menyediakan cara untuk menggagalkan unit test menggunakan `testing.T`.
-- Terdapat function `fail()`, `FailNow()`, `Error()` dan `Fata()` jika kita ingin menggagalkan unit test.
+- Terdapat function `Fail()`, `FailNow()`, `Error()` dan `Fatal()` jika kita ingin menggagalkan unit test.
 
 ### `t.Fail()` dan `t.FailNow()`
 
@@ -466,3 +466,23 @@ func (service CategoryService) Get(id string) (*entity.Category, error) {
   }
 }
 ```
+
+## Benchmark
+
+- Selain unit test, Go-Lang testing package juga mendukung melakukan benchmark.
+- Benchmark adalah mekanisme menghitung kecepatan performa kode aplikasi kita.
+- Benchmark di Go-Lang dilakukan dengan cara secara otomatis melakukan iterasi kode yang kita panggil berkali-kali sampai waktu tertentu.
+- Kita tidak perlu menentukan jumlah iterasi dan lamanya, karena itu sudah diatur oleh `testing.B` bawaan dari testing package.
+
+### `testing.B` (Benchmark)
+
+- `testing.B` adalah `struct` yang digunakan untuk melakukan benchmark.
+- `testing.B` mirip dengan `testing.T`, terdapat function `Fail()`, `FailNow()`, `Error()`, `Fatal()` dan lain-lain.
+- Yang membedakan, ada beberapa attribute dan function tambahan yang digunakan untuk melakukan benchmark.
+- Salah satunya adalah attrubute `N`, ini digunakna untuk melakukan total iterasi sebuah benchmark.
+
+### Cara Kerja Benchmark
+
+- Cara kerja benchmark di Go-Lang sangat sederhana.
+- Gimana kita hanya perlu membuat perulangan sejumlah `N` attribute.
+- Nanti secara otomatis Go-Lang akan melakukan eksekusi sejumlah perulangan yang ditentukkan secara otomatis, lalu mendeteksi berapa lama proses tersebut berjalan, dan disimpulkan performa benchmark nya dalam waktu.
