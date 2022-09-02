@@ -514,3 +514,63 @@ func BenchmarkHelloWorld(b *testing.B) {
   - `go test -v -run=NotMatchUnitTest -bench=BenchmarkTest`.
 - Jika kita menjalankan benchmark di root module dan ingin semua module dijalankan, kita bisa gunakan perintah :
   - `go test -v -bench=./...`
+
+## Sub Benchmark
+
+- Sama seperti `testing.T`, di `testing.B` juga kita bisa membuat sub benchmark menggunakan function `Run()`.
+
+### Kode : Membuat Sub Benchmark
+
+```go
+func BenchmarkSub(b *testing.B) {
+  b.Run("Yusril", func(b *testing.B) {
+    for i := 0; i < b.N ; i++ {
+      HelloWorld("Yusril")
+    }
+  })
+
+  b.Run("Arzaqi", func(b *testing.B) {
+    for i := 0; i < b.N ; i++ {
+      HelloWorld("Arzaqi")
+    }
+  })
+}
+```
+
+### Menjalankan Hanya Sub Benchmark
+
+- Saat kita menjalankan benchmark function, maka semua sub benchmark akan bejalan.
+- Namun jika kita ingin menjalankan salah satu sub benchmark saja, kita bisa gunakan perintah :
+  - `go test -v -bench=BenchmarkNama/NamaSub`
+
+### Table Benchmark
+
+- Sama seperti di unit test, programmer Go-Lang terbiasa membuat table benchmark juga.
+- Ini digunakan agar kita bisa mudah melakukan performance test dengan kombinasi data berbeda-beda tanpa harus membuat benyak benchmark function.
+
+### Kode : Table Benchmark
+
+```go
+func BenchmarkTable(b *testing.B) {
+	benchmarks := []struct {
+		name, request string
+	}{
+		{
+			name:    "HelloWorld(Yusril)",
+			request: "Yusril",
+		},
+		{
+			name:    "HelloWorld(Arzaqi)",
+			request: "Arzaqi",
+		},
+	}
+
+	for _, benchmark := range benchmarks {
+		b.Run(benchmark.name, func(b *testing.B) {
+			for i := 0; i < b.N; i++ {
+				HelloWorld(benchmark.request)
+			}
+		})
+	}
+}
+```
