@@ -10,6 +10,7 @@
 
 - Concurrency & Parallel Programming.
 - Groutines.
+- Membuat Project
 - Channel.
 - Buffered Channel.
 - Mutex.
@@ -92,5 +93,34 @@ Dalam Go-Scheduler, kita akan mengenal beberapa terminologi.
 - **P** : Processor
 
 ![Cara Kerja Go Scheduler](./img/Cara-Kerja-Go-Scheduler.png)
+
+## Membuat Project
+
+- Buat folder belajar-golang-goroutine.
+- Buat module :
+  - `go mod init belajar-golang-goroutine`
+
+## Membuat Goroutine
+
+- untuk membuat goroutine di Go-Lang sangat lah sederhana.
+- Kita hanya cukup menambahkan perintah go sebelum memanggil function yang akan kita jalankan dalam goroutine.
+- Saat sebuah function kita jalankan dalam goroutine, function tersebut akan berjalan secara asynchronous, artinya tidak akan ditunggu sampai function tersebut selesai.
+- Aplikasi akan lanjut berjalan ke kode program selanjutnya tanpa menunggu goroutine yang kita buat selesai.
+
+## Kode : Membuat Goroutine
+
+```go
+func SayHello(name string) {
+  fmt.Println("Hello " + name)
+}
+
+func TestCreateGoroutine(t *testing.T) {
+  go SayHello("Yusril")
+  // SayHello("Yusril")
+  fmt.Println("Ups")
+
+  time.Sleep(1 * time.Second)
+}
+```
 
 ###
