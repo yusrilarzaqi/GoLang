@@ -9,7 +9,7 @@
 ## Agenda
 
 - Concurrency & Parallel Programming.
-- Groutines.
+- Goroutine.
 - Membuat Project
 - Channel.
 - Buffered Channel.
@@ -122,5 +122,46 @@ func TestCreateGoroutine(t *testing.T) {
   time.Sleep(1 * time.Second)
 }
 ```
+
+## Goroutine Sangat Ringan
+
+- Seperti yang sebelumnya dijelaskan, bahwa goroutine itu sangat ringan.
+- Kita bisa membuat ribuan, bahkan sampai jutaan goroutine tanpa takus boros memory.
+- Tidak seperti thread yang ukurannya berat, goroutine sangatlah ringan.
+
+### Kode : Membuat Banyak Goroutine
+
+```go
+func DisplayNumber(number int) {
+  fmt.Println("Display", number)
+}
+
+func TestManyGoroutine(t *testing.T) {
+  for i := 0; i < 100000;i++ {
+    go DisplayNumber(i)
+  }
+
+  time.Sleep(1 * time.Second)
+}
+```
+
+## Pengenalan Channel
+
+- Channel adalah tempat komunikasi secara synchrounous yang bisa dilakukan oleh goroutine.
+- Di Channel terdapat pengirim dan penerima, biasanya pengirim adlah goroutine yang berbeda.
+- Saat melakukan pengirim data ke Channel, goroutine akan ter-block, sampai ada yang menerima data tersebut.
+- Maka dari itu, channel disebut alat komunikasi synchrounous (blocking).
+- Channel cocok sekali sebagai alternatif seperti mekanisme `async` `await` yang terdapat di beberapa bahasa programming lain.
+
+### Diagram Channel
+
+![Diagram Channel](./img/Diagram-Channel.png)
+
+### Karakteristik Channel
+
+- Secara default channel hanya bisa menampung satu data, jika kita ingin menambahkan data lagi, harus menunggu data yang ada di channel diambil.
+- Channel hanya bisa menerima satu jenis data.
+- Channel bisa diambil dari lebih dari satu goroutine.
+- Channel harus di close jika tidak digunakan, atau bisa menyebabkan memory leak.
 
 ###
