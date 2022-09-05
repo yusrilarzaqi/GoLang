@@ -164,4 +164,67 @@ func TestManyGoroutine(t *testing.T) {
 - Channel bisa diambil dari lebih dari satu goroutine.
 - Channel harus di close jika tidak digunakan, atau bisa menyebabkan memory leak.
 
+## Membuat Channel
+
+- Channel di Go-Lang direpresentasikan dengan tipe data chan.
+- Untuk membuat channel mudah, kita bisa menggunakan `make()`, mirip ketika membuat map.
+- Namun saat pembuatan channel, kita harus tentukan tipe data apa yang bisa dimasukan kedalam channel tersebut.
+
+### Kode : Membuat Channel
+
+```go
+channel := make(chan string)
+```
+
+### Mengirim dan Menerima Data dari Channel
+
+- Seperti yang sudah dibahas sebelumnya, channel bisa digunakan untuk mengirim dan menerima data.
+- Untuk mengirim data, kita bisa gunakan kode :
+  - `channel <- data`.
+- Sedangkan untuk menerima data, bisa gunakan kode :
+  - `data <- channel`.
+- Jika selesai, jangan lupa untuk menutup menggunakan function `close()`.
+
+### Kode : Membuat Channel (2)
+
+```go
+func TestCreateChannel(t *testing.T) {
+  channel := make(chan string)
+  defer close(channel)
+
+  go func() {
+    time.Sleep(1 * time.Second)
+    channel <- "Yusril Arzaqi"
+    fmt.Println("Selesai Mengirim Data ke Channel")
+  }()
+
+  time.Sleep(5 * time.Second)
+}
+```
+
+### Channel Sebagai Parameter
+
+- Dalam kenyataan pembuatan aplikasi, seringnya kita akan mengirim channel ke function lain via parameter.
+- Sebelumnya kita tahu bahkan di Go-Lang by default, parameter adalah pass by value, artinya value akan diduplikasi lalu dikirim ke function parameter, sehingga jika kita ingin mengirim data asli, kita bisa gunakan pointer (agar pass by refernce).
+- Berbeda dengan Channel, kita tidak perlu melakukan hal tersebut.
+
+### Kode : Channel Sebagai Parameter
+
+```go
+func GiveMeResponse(channel chan string) {
+  time.Sleep(2 * time.Second)
+  channel <- "Yusril Arzaqi"
+}
+
+func TestChannelAsParameter(t *testing.T) {
+  channel := make(chan string)
+
+  go GiveMeResponse(channel)
+
+  data := <- channel
+  fmt.Println(data)
+  close(channel)
+}
+```
+
 ###
