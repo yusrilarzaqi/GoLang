@@ -227,4 +227,68 @@ func TestChannelAsParameter(t *testing.T) {
 }
 ```
 
+## Channel In dan Out
+
+- Saat kita mengirim channel sebagai parameter, isi function tersebut bisa mengirim dan menerima data dari channel tersebut.
+- Kadang kita ingin memberi tahu tarhap function, misal bahwa channel tersebut hanya digunakan untuk mengirim data, atau hanya dapat digunakan untuk data.
+- Hal ini bisa kita lakukan parameter dengan cara menandai apakah channel ini digunakan untuk _in_ (mengirim) atau _out_ (menerima data).
+
+### Kode : Channel In dan Out
+
+```go
+func OnlyIn(channel chan<- string) {
+  time.Sleep(1 * time.Second)
+  channel <- "Yusril Arzaqi"
+}
+
+func OnlyOut(channel chan<- string) {
+  // data := <- channel
+  // sama saja
+  fmt.Println(<- channel)
+}
+
+func TestInOutChannel(t *testing.T) {
+  channel = make(chan string);
+  defer close(channel)
+
+  go OnlyIn(channel)
+  go OnlyOut(channel)
+
+  time.Sleep(2 * time.Second)
+}
+```
+
+## Buffered Channel
+
+- Seperti yang dijelaskan sebelumnya, bahwa secara default channel itu hanya bisa menerima 1 data.
+- Artinya jika kita menambah data ke-2, maka kita akan meminta menunggu sampai data ke-1 ada yang mengambil.
+- Kadang-kadang ada kasus dimana pengirim lebih cepa dibanding penerima, dalam hal ini jika kita menggunakan channel, maka otomatis pengirim akan ikut lambat juga.
+- Untuknya ada Buffered Channel, yaitu buffer yang bisa digunakan untuk menampung data antrian di Channel.
+
+### Buffer Capacity
+
+- Kita bebas memasukkan beberapa jumlah kapasitas antrian di dalam buffer.
+- Jika kita set misal 5, artinya kita bisa menerima 5 data dibuffer.
+- Jika kita mengirim data ke 6, maka kita diminta untuk menenggu sampai buffer ada yang kosong.
+- Ini cocok sekali ketika memang goroutine yang menerima data lebih lambat dari yang mengirim data.
+
+### Diagram Channel Buffer
+
+![Diagram Channel Buffer](./img/Diagram-Channel-buffer.png)
+
+### Kode : Membuat Buffered Channel
+
+```go
+package main
+
+import "fmt"
+
+func main() {
+	channel := make(chan string, 3)
+
+	fmt.Println(cap(channel)) // melihat panjang buffer
+	fmt.Println(len(channel)) // melihat jumlah data dibuffer
+}
+```
+
 ###
