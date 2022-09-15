@@ -291,4 +291,33 @@ func main() {
 }
 ```
 
+## Range Channel
+
+- Kadang-kadang ada kasus sebuah channel dikirim data secara terus menerus oleh pengirim.
+- Dan kadang tidak jelas kapan hannel tersebut akan berhenti menerima data.
+- Salah satu yang kita lakukan adalah dengan menggunakan perulangan range ketika menerima data dari channel.
+- Ketika sebuah channel di `close()`, maka secara otomatis perulangan tersbut akan berhenti.
+- Ini lebih sederhana dari pada kita melakukan pengecekan channel secara manual.
+
+### Kode : Range Channel
+
+```go
+func TestRangeChannel(t *testing.T) {
+  channel := make(chan string)
+
+  go func() {
+    for i := 0; i < 10; i++ {
+      channel <- "Perulangn " + strconv.Itoa(i)
+    }
+    close(channel)
+  }()
+
+  for data := range channel {
+    fmt.Println(data)
+  }
+
+  fmt.Println("DONE")
+}
+```
+
 ###
